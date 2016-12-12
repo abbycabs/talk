@@ -44,11 +44,12 @@ class ConfigureStreamContainer extends Component {
   }
 
   toggleStatus () {
-    this.props.updateStatus(this.props.config.status === 'open' ? 'closed' : 'open');
+    const {status} = this.props.config;
+    this.props.updateStatus(status === 'open' ? 'closed' : 'open');
   }
 
   render () {
-    const {status} = this.props;
+    const {status} = this.props.config;
     return (
       <div>
         <ConfigureCommentStream
@@ -60,7 +61,7 @@ class ConfigureStreamContainer extends Component {
         <hr />
         <h3>{status === 'open' ? 'Close' : 'Open'} Comment Stream</h3>
         <CloseCommentsInfo
-          onClick={this.toggleStatus}
+          handleStatusChange={this.toggleStatus}
           status={status}
         />
       </div>

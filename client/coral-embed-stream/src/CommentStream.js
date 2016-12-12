@@ -279,10 +279,7 @@ class CommentStream extends Component {
             </TabContent>
             <TabContent show={activeTab === 2}>
               <RestrictedContent restricted={!loggedIn}>
-                <ConfigureStreamContainer
-                  status={status}
-                  onClick={this.toggleStatus}
-                />
+                <ConfigureStreamContainer />
               </RestrictedContent>
             </TabContent>
           <Notification

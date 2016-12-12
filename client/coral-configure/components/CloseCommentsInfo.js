@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button} from 'coral-ui';
 
-export default ({status, onClick}) => (
+export default ({status, handleStatusChange}) => (
   status === 'open' ? (
     <div className="close-comments-intro-wrapper">
       <p>
@@ -9,7 +9,7 @@ export default ({status, onClick}) => (
         no new comments may be submitted and all previous comments will still
         be displayed.
       </p>
-      <Button onClick={onClick}>Close Stream</Button>
+      <Button onClick={handleStatusChange}>Close Stream</Button>
     </div>
   ) : (
     <div className="close-comments-intro-wrapper">
@@ -17,7 +17,7 @@ export default ({status, onClick}) => (
         This comment stream is currently closed. By opening this comment stream,
         new comments may be submitted and displayed
       </p>
-      <Button onClick={onClick}>Open Stream</Button>
+      <Button onClick={handleStatusChange}>Open Stream</Button>
     </div>
   )
 );
