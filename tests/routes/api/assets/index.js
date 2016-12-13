@@ -92,6 +92,7 @@ describe('/api/v1/assets', () => {
         .then((asset) => {
           expect(asset).to.have.property('isClosed', null);
           expect(asset).to.have.property('closedAt', null);
+          expect(asset).to.have.property('closedMessage', null);
 
           return chai.request(app)
             .put(`/api/v1/asset/${asset.id}/status`)

@@ -3,6 +3,7 @@ const router = express.Router();
 
 const Asset = require('../../../models/asset');
 const scraper = require('../../../services/scraper');
+const Setting = require('../../../models/setting');
 
 // List assets.
 router.get('/', (req, res, next) => {
@@ -90,27 +91,29 @@ router.put('/:asset_id/settings', (req, res, next) => {
 });
 
 router.put('/:asset_id/status', (req, res, next) => {
-
   const id = req.params.asset_id;
 
   const {
-    closedAt,
-    closedMessage
+    closedAt
   } = req.body;
 
-  Asset
-    .update({id}, {
-      $set: {
-        closedAt,
-        closedMessage
-      }
-    })
-    .then(() => {
+  Setting.public()
+    .then((settings) => {
+      const closedMessage = req.body.closedMessage ? settings.closedMessage : req.body.closedMessage;
+      Asset
+         .update({id}, {
+           $set: {
+             closedAt,
+             closedMessage
+           }
+         })
+         .then(() => {
 
-      res.status(204).json();
-    })
-    .catch((err) => {
-      next(err);
+           res.status(204).json();
+         })
+         .catch((err) => {
+           next(err);
+         });
     });
 });
 

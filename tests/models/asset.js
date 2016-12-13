@@ -79,21 +79,4 @@ describe('models.Asset', () => {
     });
   });
 
-  describe('#findOrCreateByUrl', ()=> {
-    it('should find an asset by a url', () => {
-      return Asset.findOrCreateByUrl('http://test.com')
-        .then((asset) => {
-          expect(asset).to.have.property('url')
-            .and.to.equal('http://test.com');
-        });
-    });
-
-    it('should return a new asset when the url does not exist', () => {
-      return Asset.findOrCreateByUrl('http://new.test.com')
-        .then((asset) => {
-          expect(asset).to.have.property('id')
-            .and.to.not.equal(1);
-        });
-    });
-  });
 });
