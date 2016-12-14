@@ -1,8 +1,8 @@
 import React from 'react';
 import {render} from 'react-dom';
-import CommentStream from './CommentStream';
+import CommentStream from './src/CommentStream';
 import {Provider} from 'react-redux';
-import {store} from '../../coral-framework';
+import {store} from '../coral-framework';
 
 render(
     <Provider store={store}>
